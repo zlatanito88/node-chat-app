@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         // notify to all
         io.emit("newMessage", generateMessage(message.from, message.text));
 
-        callback('This is from the server');
+        callback();
 
     });
 
