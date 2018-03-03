@@ -23,13 +23,15 @@ io.on('connection', (socket) => {
     // notify the new user to other users
     socket.broadcast.emit("newMessage", generateMessage('Admin', 'New user joined'));
 
-    socket.on('createMessage', (message) => {
+    socket.on('createMessage', (message, callback) => {
 
         console.log('Create message', message);
 
         // notify to all
         io.emit("newMessage", generateMessage(message.from, message.text));
-        
+
+        callback('This is from the server');
+
     });
 
     socket.on('disconnect', () => {
